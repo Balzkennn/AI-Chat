@@ -1,9 +1,10 @@
 import React from "react";
+import Sidebar from "./components/SideBar";
 
 const App = () => {
   return (
     <div>
-      <aiChat />
+      <Sidebar />
     </div>
   );
 };
