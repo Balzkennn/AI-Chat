@@ -25,7 +25,7 @@ export default function Sidebar() {
 
         {/* Menu List */}
         <div className="flex-1 space-y-1 overflow-y-auto">
-          <MenuItem icon={<FaSearch />} label="Search" isOpen={isOpen} active />
+          <MenuItem icon={<FaSearch />} label="Search" isOpen={isOpen} />
           <MenuItem icon={<FaBook />} label="Library" isOpen={isOpen} />
           <MenuItem icon={<FaRocket />} label="Sora" isOpen={isOpen} />
           <MenuItem icon={<FaRobot />} label="GPTs" isOpen={isOpen} />
