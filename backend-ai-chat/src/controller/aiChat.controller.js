@@ -1,4 +1,3 @@
-// src/controller/aiChat.controller.js
 const fetch = require("node-fetch");
 
 const sendMessage = async (req, res) => {

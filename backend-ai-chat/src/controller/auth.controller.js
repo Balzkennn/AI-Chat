@@ -3,10 +3,10 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
 exports.register = async (req, res) => {
-  const { username, password } = req.body;
+  const { userName, password } = req.body;
 
   try {
-    const existingUser = await User.findOne({ username });
+    const existingUser = await User.findOne({ userName });
     if (existingUser) {
       return res.status(400).json({ message: 'Username sudah digunakan' });
     }
@@ -14,7 +14,7 @@ exports.register = async (req, res) => {
     const hashedPassword = await bcrypt.hash(password, 10);
 
     const newUser = new User({
-      username,
+      userName,
       password: hashedPassword,
     });
 
@@ -28,10 +28,10 @@ exports.register = async (req, res) => {
 };
 
 exports.login = async (req, res) => {
-  const { username, password } = req.body;
+  const { userName, password } = req.body;
 
   try {
-    const user = await User.findOne({ username });
+    const user = await User.findOne({ userName });
     if (!user) {
       return res.status(404).json({ message: 'Username tidak ditemukan' });
     }
@@ -42,7 +42,7 @@ exports.login = async (req, res) => {
     }
 
     const token = jwt.sign(
-      { id: user._id },
+      { id: user._id, userName: user.userName },
       process.env.JWT_SECRET,
       { expiresIn: '1d' }
     );
