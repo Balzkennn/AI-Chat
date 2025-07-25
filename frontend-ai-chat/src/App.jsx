@@ -1,11 +1,8 @@
 import React from "react";
-import Sidebar from "./components/SideBar";
+import AiChat from "./pages/ai-chat/ai-chat";
+
 const App = () => {
-  return (
-    <div>
-      <Sidebar />
-    </div>
-  );
+  return <AiChat />;
 };
 
 export default App;
