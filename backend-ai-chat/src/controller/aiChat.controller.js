@@ -15,7 +15,7 @@ const sendMessage = async (req, res) => {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        model: "qwen/qwen3-235b-a22b-07-25:free", // Model gratis dari OpenRouter
+        model: "qwen/qwen3-235b-a22b-07-25:free",
         messages: [
           { role: "system", content: "You are a helpful AI assistant." },
           { role: "user", content: message }
