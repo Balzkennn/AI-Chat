@@ -9,21 +9,17 @@ export default function Sidebar() {
   return (
     <div className={`h-screen flex flex-col justify-between transition-all duration-300 ${isOpen ? "w-60" : "w-16"} bg-[#1f1f1f] text-white shadow-lg`}>
       <div className="flex flex-col p-4 h-full">
-        {/* Toggle Button */}
         <button onClick={toggleSidebar} className="mb-6 text-gray-300 hover:text-white transition-transform duration-300">
           {isOpen ? <FaChevronLeft /> : <FaChevronRight />}
         </button>
 
-        {/* Logo */}
-        {isOpen && <h1 className="text-xl font-semibold text-center mb-6 tracking-wide">ChatGPT</h1>}
+        {isOpen && <h1 className="text-xl font-semibold text-center mb-6 tracking-wide">AiChat</h1>}
 
-        {/* New Chat Button */}
         <button className="flex items-center gap-2 text-sm bg-gray-800 px-3 py-2 rounded-md hover:bg-gray-900 transition w-full mb-6">
           <FaPlus />
           {isOpen && "New Chat"}
         </button>
 
-        {/* Menu List */}
         <div className="flex-1 space-y-1 overflow-y-auto">
           <MenuItem icon={<FaSearch />} label="Search" isOpen={isOpen} />
           <MenuItem icon={<FaBook />} label="Library" isOpen={isOpen} />
