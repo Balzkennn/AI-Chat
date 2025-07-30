@@ -1,7 +1,8 @@
 const express = require("express");
 const router = express.Router();
-const { sendMessage } = require("../controller/aiChat.controller");
+const { handleChat } = require("../controllers/chat.controller");
+const verifyToken = require("../middleware/authMiddleware");
 
-router.post("/chat", sendMessage);
+router.post("/chat", verifyToken, handleChat);
 
 module.exports = router;
