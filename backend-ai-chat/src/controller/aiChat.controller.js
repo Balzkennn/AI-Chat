@@ -1,3 +1,5 @@
+const axios = require("axios");
+
 exports.handleChat = async (req, res) => {
   const { prompt } = req.body;
 
@@ -6,13 +8,36 @@ exports.handleChat = async (req, res) => {
   }
 
   try {
-    // Di sini kamu bisa pakai API AI kamu, misalnya fetch ke LM Studio, OpenAI, DeepSeek, dsb
-    // Contoh dummy:
-    const aiResponse = `Hai ${req.user.userName}, kamu bertanya: "${prompt}"`;
+    const response = await axios.post(
+      "https://openrouter.ai/api/v1/chat/completions",
+      {
+        model: "qwen/qwen3-coder:free",
+        messages: [
+          {
+            role: "system",
+            content: "Kamu adalah asisten pemrograman yang membantu menjelaskan kode dan menjawab pertanyaan teknis."
+          },
+          {
+            role: "user",
+            content: prompt
+          }
+        ]
+      },
+      {
+        headers: {
+          "Authorization": `Bearer ${process.env.OPENROUTER_API_KEY}`,
+          "Content-Type": "application/json",
+          "HTTP-Referer": "http://localhost:3000", // ganti dengan domain kamu jika production
+          "X-Title": "Belajar Backend AI" // nama proyek bebas
+        }
+      }
+    );
 
-    res.status(200).json({ reply: aiResponse });
+    const reply = response.data.choices[0].message.content;
+    res.status(200).json({ reply });
+
   } catch (err) {
-    console.error("AI ERROR:", err.message);
+    console.error("AI ERROR:", err.response?.data || err.message);
     res.status(500).json({ message: "Gagal memproses permintaan AI" });
   }
 };

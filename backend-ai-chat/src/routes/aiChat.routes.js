@@ -1,7 +1,9 @@
+
 const express = require("express");
-const router = express.Router();
+const verifyToken = require("../middlewares/verifyToken");
 const { handleChat } = require("../controllers/chat.controller");
-const verifyToken = require("../middleware/authMiddleware");
+
+const router = express.Router();
 
 router.post("/chat", verifyToken, handleChat);
 
