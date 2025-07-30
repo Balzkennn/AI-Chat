@@ -1,10 +1,9 @@
-
 const express = require("express");
-const verifyToken = require("../middlewares/verifyToken");
-const { handleChat } = require("../controllers/chat.controller");
+const { handleChat } = require("../controllers/ai.controller");
+const verifyToken = require("../middleware/auth.middleware");
 
 const router = express.Router();
 
-router.post("/chat", verifyToken, handleChat);
+router.post("/chat", verifyToken, handleChat); // ✅ Butuh token
 
 module.exports = router;
