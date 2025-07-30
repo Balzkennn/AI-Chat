@@ -27,8 +27,8 @@ exports.handleChat = async (req, res) => {
         headers: {
           "Authorization": `Bearer ${process.env.OPENROUTER_API_KEY}`,
           "Content-Type": "application/json",
-          "HTTP-Referer": "http://localhost:3000", // ganti dengan domain kamu jika production
-          "X-Title": "Belajar Backend AI" // nama proyek bebas
+          "HTTP-Referer": "http://localhost:8000",
+          "X-Title": "Ai Chat"
         }
       }
     );
