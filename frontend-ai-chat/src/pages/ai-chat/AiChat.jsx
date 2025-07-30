@@ -1,7 +1,6 @@
 import React from "react";
 import SideBar from "../../components/SideBar";
 import ChatInput from "../../components/ChatInput";
-import Login from "../login/login";
 
 const AiChat = () => {
   return (
@@ -16,8 +15,6 @@ const AiChat = () => {
 
         {/* Chat input */}
         <ChatInput />
-
-        <Login />
       </div>
     </div>
   );
