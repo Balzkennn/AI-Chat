@@ -1,7 +1,6 @@
-// src/routes/index.jsx
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import LoginPage from "../pages/login/LoginPage";
-import ChatPage from "../pages/ai-chat/ChatPage";
+import LoginPage from "../pages/login/login.jsx";
+import ChatPage from "../pages/ai-chat/ai-chat.jsx";
 
 const AppRoutes = () => {
   return (
